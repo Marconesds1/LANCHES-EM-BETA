@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanches Online - Pedido</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Lanches Online</h1>
+    <div id="cart-icon" onclick="openCart()">
+        🛒<span id="cart-count" style="display:none;">0</span>
+    </div>
+</header>
+
+<main id="product-list">
+    <!-- Combos -->
+    <h2 class="category-title">Combos</h2>
+    <div class="category">
+        <div class="product" onclick="addToCart('Combo X-Burguer + Refrigerante', 25)">
+            <img src="https://images.pexels.com/photos/1104776/pexels-photo-1104776.jpeg" alt="Combo X-Burguer">
+            <h3>Combo X-Burguer + Refri</h3>
+            <p>R$25,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Combo X-Salada + Batata', 30)">
+            <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Combo X-Salada">
+            <h3>Combo X-Salada + Batata</h3>
+            <p>R$30,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Combo Pizza + Refri', 45)">
+            <img src="https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg" alt="Combo Pizza">
+            <h3>Combo Pizza + Refri</h3>
+            <p>R$45,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Combo Dogão + Suco', 20)">
+            <img src="https://images.pexels.com/photos/1415107/pexels-photo-1415107.jpeg" alt="Combo Dogão">
+            <h3>Combo Dogão + Suco</h3>
+            <p>R$20,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Combo Natural + Água', 18)">
+            <img src="https://images.pexels.com/photos/709792/pexels-photo-709792.jpeg" alt="Combo Natural">
+            <h3>Combo Natural + Água</h3>
+            <p>R$18,00</p>
+        </div>
+    </div>
+
+    <!-- Hambúrgueres -->
+    <h2 class="category-title">Hambúrgueres</h2>
+    <div class="category">
+        <div class="product" onclick="addToCart('X-Burguer', 15)">
+            <img src="https://images.pexels.com/photos/1104776/pexels-photo-1104776.jpeg" alt="X-Burguer">
+            <h3>X-Burguer</h3>
+            <p>R$15,00</p>
+        </div>
+        <div class="product" onclick="addToCart('X-Salada', 18)">
+            <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="X-Salada">
+            <h3>X-Salada</h3>
+            <p>R$18,00</p>
+        </div>
+        <div class="product" onclick="addToCart('X-Bacon', 20)">
+            <img src="https://images.pexels.com/photos/750073/pexels-photo-750073.jpeg" alt="X-Bacon">
+            <h3>X-Bacon</h3>
+            <p>R$20,00</p>
+        </div>
+        <div class="product" onclick="addToCart('X-Tudo', 25)">
+            <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg" alt="X-Tudo">
+            <h3>X-Tudo</h3>
+            <p>R$25,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Hambúrguer Vegetariano', 22)">
+            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Hambúrguer Vegetariano">
+            <h3>Hambúrguer Vegetariano</h3>
+            <p>R$22,00</p>
+        </div>
+    </div>
+
+    <!-- Pizzas -->
+    <h2 class="category-title">Pizzas</h2>
+    <div class="category">
+        <div class="product" onclick="addToCart('Pizza Calabresa', 30)">
+            <img src="https://images.pexels.com/photos/1618479/pexels-photo-1618479.jpeg" alt="Pizza Calabresa">
+            <h3>Pizza Calabresa</h3>
+            <p>R$30,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Pizza Portuguesa', 35)">
+            <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg" alt="Pizza Portuguesa">
+            <h3>Pizza Portuguesa</h3>
+            <p>R$35,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Pizza 4 Queijos', 40)">
+            <img src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg" alt="Pizza 4 Queijos">
+            <h3>Pizza 4 Queijos</h3>
+            <p>R$40,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Pizza Frango Catupiry', 38)">
+            <img src="https://images.pexels.com/photos/845811/pexels-photo-845811.jpeg" alt="Pizza Frango">
+            <h3>Pizza Frango</h3>
+            <p>R$38,00</p>
+        </div>
+        <div class="product" onclick="addToCart('Pizza Marguerita', 32)">
+            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Pizza Marguerita">
+            <h3>Pizza Marguerita</h3>
+            <p>R$32,00</p>
+        </div>
+    </div>
+</main>
+
+<!-- Modal Carrinho -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <h2>Seu Pedido</h2>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: R$0,00</p>
+        <button onclick="confirmOrder()">Confirmar Pedido</button>
+        <button onclick="closeCart()">Fechar</button>
+    </div>
+</div>
+
+<!-- Modal Endereço -->
+<div id="address-modal" class="modal">
+    <div class="modal-content">
+        <h2>Endereço de Entrega</h2>
+        <input type="text" id="nome" placeholder="Seu nome">
+        <input type="text" id="bairro" placeholder="Bairro">
+        <input type="text" id="rua" placeholder="Rua">
+        <input type="text" id="numero" placeholder="Número">
+        <button onclick="finalizarPedido()">Finalizar Pedido</button>
+        <button onclick="closeAddress()">Cancelar</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
